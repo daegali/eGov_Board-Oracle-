@@ -29,7 +29,7 @@
 				success: function( data ) { // controller -> "ok" , "fail"
 					if( data == "ok" ) {
 						alert("저장을 완료하였습니다.");
-					/*	location = "/boardList.do";*/
+						location = "boardList.do#list";
 					} else {
 						
 						alert("저장에 실패하였습니다. 다시 시도해주세요" + data);

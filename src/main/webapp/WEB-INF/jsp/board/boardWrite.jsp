@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
-    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,39 +9,22 @@
 		 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/main.css'/>"/>
 	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/noscript.css'/>"/>
 	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/fontawesome-all.min.css'/>"/>
-	
-	<script type="text/javascript" >
-			// trim() -> 앞뒤 공백 제거 , java, jsp
-/* 			
-			$(function(){
-				
-					$("#title").val("제목입력");
-				
-			}); */
-			
-			/* /* 	 	if( document.frm.title.value == "" ){
-			alert("제목을 입력해 주세요~!");
-			document.frm.title.focus();
-			return false;
+		<style>
+			th {
+				font-weight: bold ;
 			}
-			if( document.frm.pass.value == "" ){
-				alert("암호를 입력해 주세요~!");
-				document.frm.pass.focus();
-				return false;
-			}
-			// document.frm.submit() 동기전송 방식 */
-	</script>
+		</style>
 	</head>
+	
 	<body class="is-preload">
-
+	
 		<!-- Wrapper-->
 			<div id="wrapper">
-
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="#" class="icon solid fa-home"><span>홈</span></a>
-						<a href="#work" class="icon solid fa-folder"><span>글목록</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>글쓰기</span></a>
+						<a href="boardList.do#list" class="icon solid fa-folder"><span>글목록</span></a>
+						<a href="boardWrite.do#contact" class="icon solid fa-envelope"><span>글쓰기</span></a>
 						<a href="https://github.com/daegali" class="icon brands fa-twitter"><span>GIT</span></a>
 					</nav>
 
@@ -63,41 +44,34 @@
 							</article>
 
 						<!-- Work -->
-							<article id="work" class="panel">
+							<article id="list" class="panel">
 								<header>
-									<h2>Work</h2>
+									<h4 align="center">글목록</h4>
 								</header>
-								<p>
-									Phasellus enim sapien, blandit ullamcorper elementum eu, condimentum eu elit.
-									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-									luctus elit eget interdum.
-								</p>
 								<section>
 									<div class="row">
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-										</div>
+										<table>
+											<tr>
+												<th width="15%">번호</th>
+												<th width="30%" align="left">제목</th>
+												<th width="15%">글쓴이</th>
+												<th width="25%">등록일</th>
+												<th width="15%">조회수</th>
+											</tr>
+										
+										<c:set var="cnt"  value="1"/>
+											
+										<c:forEach var = "result"  items="${resultList}">
+											<tr align="center">
+												<td><c:out value="${cnt}"/></td>
+												<td align="left"><c:out value="${result.title}"/></td>
+												<td><c:out value="${result.name}"/></td>
+												<td><c:out value="${result.rdate}"/></td>
+												<td><c:out value="${result.hits}"/></td>
+											</tr>									
+											<c:set var="cnt"  value="${cnt + 1}"/>
+										</c:forEach>
+										</table>
 									</div>
 								</section>
 							</article>
