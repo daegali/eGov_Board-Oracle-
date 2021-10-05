@@ -27,24 +27,42 @@
 	</insert>
 	
 	<select id="boardDAO.selectBoardList" parameterClass="boardVO" resultClass="egovMap">
-	<![CDATA[	
-SELECT b.* FROM(
-	SELECT rownum rn, a.* FROM ( SELECT unq
-			 , title
-			 , name
-			 , content
-			 , hits
-			 , to_char(rdate, 'yyyy-mm-dd')  rdate
-	FROM 
-	 		tb_board
-		ORDER BY unq DESC ) a ) b
-	WHERE 
-				rn >= #startIndex# and rn <= #endIndex#
-			]]>					
+		<!-- page 처리를 위해 SELECT b.* FROM(
+				SELECT rownum rn, a.* FROM (  	rn >= #startIndex# and rn <= #endIndex# 부분이 추가됨  -->
+			SELECT b.* FROM(
+				SELECT rownum rn, a.* FROM (
+				 SELECT unq
+						 , title
+						 , name
+						 , content
+						 , hits
+						 , to_char(rdate, 'yyyy-mm-dd')  rdate
+				FROM 
+				 		tb_board	
+				 			<!-- 
+				 			<isNotNull> 을 추가하지 않으면 searchText에 ? 값이 들어가
+				 				list가 제대로 출력이 되지 않음
+				 				WHERE $search$ like '%  $searchText$ %'	
+				 				$ -> 를 붙여서도 변수를 표현 가능하다. $를 붙이면 where절에 
+				 				데이터가 제대로 담기는지 확인이 가능하다.
+				 			  -->
+				 		<isNotNull property="search"	> 		
+				 			WHERE UPPER($search$) like  UPPER('%$searchText$%')		 		
+				 		</isNotNull>
+				 		
+					ORDER BY unq DESC ) a ) b
+				WHERE 
+				<!--  < 기호를 사용하기 위해 CDATA 추가 -->
+				<![CDATA[
+							rn >= #startIndex# and rn <= #endIndex#
+					]]>					
 	</select>
 	
 	<select id="boardDAO.selectBoardTotal"  resultClass="java.lang.Integer">
 		SELECT COUNT(*) total FROM tb_board
+			<isNotNull property="search"	> 		
+				 		WHERE UPPER($search$) like  UPPER('%$searchText$%')		 		
+			</isNotNull>
 	</select>
 
 </sqlMap>

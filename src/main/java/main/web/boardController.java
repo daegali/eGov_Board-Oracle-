@@ -52,6 +52,12 @@ public class boardController {
 		int totalPage = (int) Math.ceil( (double)total/pageNum );
 		// viewPage 가져오기
 		int viewPage = vo.getViewPage();
+		
+		// 사용자의 페이지 조작을 제어
+		if (viewPage > totalPage || viewPage < 1) {
+			 viewPage = 1 ;
+		}
+		
 		// 사용자가 1 -> 클릭 1,3 // 2 -> 4,6
 		// startIndex = (1-1) *3 +1
 		// endIndex = (2-1)*3 + 1
@@ -61,11 +67,10 @@ public class boardController {
 		// 1p -> 5, 2-> 2
 		// 역순 정렬
 		int startRowNo =  total - (viewPage-1) *pageNum;
-		
-		
+			
 		vo.setStartIndex(startIndex);
 		vo.setEndIndex(endIndex);
-		
+				
 		List<?> list = boardService.selectBoardList(vo);
 		System.out.println("BoardList: " + list);
 		

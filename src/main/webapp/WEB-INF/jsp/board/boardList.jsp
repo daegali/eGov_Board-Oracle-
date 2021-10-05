@@ -13,6 +13,24 @@
 			th {
 				font-weight: bold ;
 			}
+			.div2 {
+				text-align:right;
+				padding-bottom:30px;
+			}
+			.div1{
+				font-size:20px;
+			}
+			#searchText{				
+    		width: 200px;
+    		 padding-top: 5px;
+    		padding-bottom: 6px
+			}
+			#search {
+				width:100px;
+				 padding-top: 5px;
+    			padding-bottom: 6px;
+			}
+			
 		</style>
 </head>
 <body>
@@ -35,12 +53,21 @@
 								<header>
 									<h4 align="center">글목록</h4>
 								</header>
+									<div class="div1">Total : ${total }</div>	
+									<div class="div2">
+									<form id="searchFrm" method="post" action="boardList.do">	
+										<select name="search" id="search" >
+												<option value="title"  >제목</option>
+												<option value="name">글쓴이</option>
+												<option value="content">내용</option>										
+										</select>
+										<input type="text" name="searchText" id="searchText">
+										<button type="submit" >검색</button>
+										</form>
+									</div>							
 								<section>
 									<div class="row">
-										<table>
-										<caption>
-											<div align="left">Total : ${total }</div>
-										</caption>
+										<table>																		
 											<tr>
 												<th width="15%">번호</th>
 												<th width="30%" align="left">제목</th>

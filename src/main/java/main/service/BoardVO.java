@@ -11,11 +11,28 @@ public class BoardVO {
 	private int hits; // 조회수
 	private String regdate;
 	
+	// 페이징
 	private int viewPage = 1;
 	private int startIndex = 1;
 	private int endIndex = 3;
 	
+	// 검색
+	private String search;
+	private String searchText;
+		
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getSearchText() {
+		return searchText;
+	}
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
 	public int getStartIndex() {
 		return startIndex;
 	}
