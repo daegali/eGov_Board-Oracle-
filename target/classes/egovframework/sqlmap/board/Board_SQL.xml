@@ -27,17 +27,24 @@
 	</insert>
 	
 	<select id="boardDAO.selectBoardList" parameterClass="boardVO" resultClass="egovMap">
-		
-		SELECT unq
-				  , title
-				  , name
-				  , content
-				  , hits
-				  , to_char(rdate, 'yyyy-mm-dd')  rdate
-		FROM 
-				tb_board
-	    ORDER BY unq DESC
-							
+	<![CDATA[	
+SELECT b.* FROM(
+	SELECT rownum rn, a.* FROM ( SELECT unq
+			 , title
+			 , name
+			 , content
+			 , hits
+			 , to_char(rdate, 'yyyy-mm-dd')  rdate
+	FROM 
+	 		tb_board
+		ORDER BY unq DESC ) a ) b
+	WHERE 
+				rn >= #startIndex# and rn <= #endIndex#
+			]]>					
+	</select>
+	
+	<select id="boardDAO.selectBoardTotal"  resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM tb_board
 	</select>
 
 </sqlMap>

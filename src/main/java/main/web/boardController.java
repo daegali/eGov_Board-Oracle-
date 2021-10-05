@@ -20,7 +20,7 @@ public class boardController {
 	
 	@RequestMapping("/boardWrite.do")
 	public String boardWrite() {
-		return "board/boardWrite";
+		return "board/main";
 	}
 	
 	@RequestMapping("/boardWriteSave.do")
@@ -44,10 +44,31 @@ public class boardController {
 	@RequestMapping("/boardList.do")
 	public String selectBoardList( BoardVO vo, ModelMap model ) throws Exception {
 		
+		
+		// 페이징 처리
+		// 총 데이터 개수
+		int total = boardService.selectBoardTotal(vo);
+		// total 페이지 얻기
+		int totalPage = (int) Math.ceil( (double)total/3 );
+		// viewPage 가져오기
+		int viewPage = vo.getViewPage();
+		// 사용자가 1 -> 클릭 1,3 // 2 -> 4,6
+		// startIndex = (1-1) *3 +1
+		// endIndex = (2-1)*3 + 1
+		int startIndex = (viewPage - 1) * 3 + 1;
+		int endIndex = startIndex + (3 - 1) ;
+		
+		vo.setStartIndex(startIndex);
+		vo.setEndIndex(endIndex);
+		
 		List<?> list = boardService.selectBoardList(vo);
 		System.out.println("BoardList: " + list);
+		
 		model.addAttribute("resultList", list);
-		return "board/boardWrite";
+		model.addAttribute("total", total);
+		model.addAttribute("totalPage",totalPage);
+		
+		return "board/boardList";
 	}
 	
 }

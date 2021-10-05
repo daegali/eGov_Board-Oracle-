@@ -22,8 +22,8 @@
 			<div id="wrapper">
 				<!-- Nav -->
 					<nav id="nav">
-						<a href="#" class="icon solid fa-home"><span>홈</span></a>
-						<a href="boardList.do#list" class="icon solid fa-folder"><span>글목록</span></a>
+						<a href="boardWrite.do" class="icon solid fa-home"><span>홈</span></a>
+						<a href="boardList.do" class="icon solid fa-folder"><span>글목록</span></a>
 						<a href="boardWrite.do#contact" class="icon solid fa-envelope"><span>글쓰기</span></a>
 						<a href="https://github.com/daegali" class="icon brands fa-twitter"><span>GIT</span></a>
 					</nav>
@@ -51,6 +51,9 @@
 								<section>
 									<div class="row">
 										<table>
+										<caption>
+											<div align="left">Total : ${total }</div>
+										</caption>
 											<tr>
 												<th width="15%">번호</th>
 												<th width="30%" align="left">제목</th>
@@ -72,6 +75,12 @@
 											<c:set var="cnt"  value="${cnt + 1}"/>
 										</c:forEach>
 										</table>
+										<!-- 페이지 처리 -->
+										<div style=" padding-left: 50%;">
+												<c:forEach var="i"  begin="1"  end="${totalPage}">
+														<a href="boardList.do#list?viewPage=${i}">${i}</a>
+												</c:forEach>
+										</div>
 									</div>
 								</section>
 							</article>
