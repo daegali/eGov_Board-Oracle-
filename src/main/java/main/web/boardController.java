@@ -44,19 +44,24 @@ public class boardController {
 	@RequestMapping("/boardList.do")
 	public String selectBoardList( BoardVO vo, ModelMap model ) throws Exception {
 		
-		
+		int pageNum=3;
 		// 페이징 처리
 		// 총 데이터 개수
 		int total = boardService.selectBoardTotal(vo);
 		// total 페이지 얻기
-		int totalPage = (int) Math.ceil( (double)total/3 );
+		int totalPage = (int) Math.ceil( (double)total/pageNum );
 		// viewPage 가져오기
 		int viewPage = vo.getViewPage();
 		// 사용자가 1 -> 클릭 1,3 // 2 -> 4,6
 		// startIndex = (1-1) *3 +1
 		// endIndex = (2-1)*3 + 1
-		int startIndex = (viewPage - 1) * 3 + 1;
-		int endIndex = startIndex + (3 - 1) ;
+		int startIndex = (viewPage - 1) * pageNum + 1;
+		int endIndex = startIndex + (pageNum - 1) ;
+		// total - > 5
+		// 1p -> 5, 2-> 2
+		// 역순 정렬
+		int startRowNo =  total - (viewPage-1) *pageNum;
+		
 		
 		vo.setStartIndex(startIndex);
 		vo.setEndIndex(endIndex);
@@ -67,6 +72,7 @@ public class boardController {
 		model.addAttribute("resultList", list);
 		model.addAttribute("total", total);
 		model.addAttribute("totalPage",totalPage);
+		model.addAttribute("rowNum",startRowNo);
 		
 		return "board/boardList";
 	}

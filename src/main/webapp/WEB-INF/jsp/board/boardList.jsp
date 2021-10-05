@@ -49,7 +49,7 @@
 												<th width="15%">조회수</th>
 											</tr>
 										
-										<c:set var="cnt"  value="1"/>
+										<c:set var="cnt"  value="${rowNum }"/>
 											
 										<c:forEach var = "result"  items="${resultList}">
 											<tr align="center">
@@ -59,7 +59,8 @@
 												<td><c:out value="${result.rdate}"/></td>
 												<td><c:out value="${result.hits}"/></td>
 											</tr>									
-											<c:set var="cnt"  value="${cnt + 1}"/>
+											<%-- <c:set var="cnt"  value="${cnt + 1}"/> --%>
+											<c:set var="cnt"  value="${cnt - 1}"/>
 										</c:forEach>
 										</table>
 										<!-- 페이지 처리 -->
