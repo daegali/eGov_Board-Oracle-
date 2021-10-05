@@ -9,7 +9,7 @@ public class BoardVO {
 	private String name;
 	private String content;
 	private int hits; // 조회수
-	private String regdate;
+	private String rdate;
 	
 	// 페이징
 	private int viewPage = 1;
@@ -87,12 +87,11 @@ public class BoardVO {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getRdate() {
+		return rdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
-	
 	
 }

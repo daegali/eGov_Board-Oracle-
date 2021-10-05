@@ -82,4 +82,21 @@ public class boardController {
 		return "board/boardList";
 	}
 	
+	@RequestMapping("/boardDetail.do")
+	public String selectBoardDetailView( BoardVO vo, ModelMap model ) throws Exception {
+		
+		// 조회수 처리
+		boardService.updateBoardHits(vo.getUnq());
+		
+		BoardVO boardVO = boardService.selectBoardDetail(vo.getUnq());
+		
+		// Java에서 줄바꿈 적용하기
+		String content = boardVO.getContent(); 
+		boardVO.setContent(content.replace("\n", "<br>"));
+		
+		model.addAttribute("boardDetail", boardVO);
+		return "board/boardDetail";
+		
+	}
+		
 }

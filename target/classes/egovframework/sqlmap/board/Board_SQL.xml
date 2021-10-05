@@ -64,5 +64,21 @@
 				 		WHERE UPPER($search$) like  UPPER('%$searchText$%')		 		
 			</isNotNull>
 	</select>
-
+	
+	<select id="boardDAO.selectBoardDetail"  resultClass="boardVO">
+		SELECT unq
+				  , title
+				  , name
+				  , content
+				  , to_char(rdate, 'yyyy-mm-dd')  rdate
+	   FROM tb_board
+				  WHERE unq = #unq#
+	</select>
+	
+	<update id="boardDAO.updateBoardHits" >
+		UPDATE 
+			tb_board 
+				SET hits=hits+1 where unq=#unq#
+	</update>
+	
 </sqlMap>
