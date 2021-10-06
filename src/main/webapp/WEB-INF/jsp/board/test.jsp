@@ -1,57 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/main.css'/>"/>
-	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/noscript.css'/>"/>
-	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/fontawesome-all.min.css'/>"/>
-		<style>
-			th {
-				font-weight: bold ;
-			}
-			.div2 {
-				float:right;
-				padding-bottom:30px;
-			}
-			.div1{
-				font-size:20px;
-			}
-			#searchText{				
-    		width: 200px;
-    		 padding-top: 5px;
-    		padding-bottom: 6px
-			}
-			#search {
-				width:100px;
-				 padding-top: 5px;
-    			padding-bottom: 6px;
-			}
-			
-		</style>
 </head>
 <body>
-		<body class="is-preload">
-	
-		<!-- Wrapper-->
-			<div id="wrapper">
-				<!-- Nav -->
-					<nav id="nav">
-						<a href="boardWrite.do" class="icon solid fa-home"><span>홈</span></a>
-						<a href="boardList.do" class="icon solid fa-folder"><span>글목록</span></a>
-						<a href="boardWrite.do#contact" class="icon solid fa-envelope"><span>글쓰기</span></a>
-						<a href="https://github.com/daegali" class="icon brands fa-twitter"><span>GIT</span></a>
-					</nav>
-
-				<!-- Main -->
-			 <div id="main">
-						<!-- Work -->
-					<article id="list" class="panel">
-                                <h4 class="card-title" align="center">글목록</h4>
-                                <h6 class="card-subtitle">Total : ${total }</h6>
+<div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">글목록</h4>
+                                <h6 class="card-subtitle">Add class <code>.color-table .info-table</code></h6>
+                                <div class="div1">Total : ${total }</div>	
 									<div class="div2">
 									<form id="searchFrm" method="post" action="boardList.do">	
 										<select name="search" id="search" >
@@ -68,7 +28,7 @@
                                         <thead>
                                             <tr>
                                                 <th>번호</th>
-                                                <th align="left">제목</th>
+                                                <th>제목</th>
                                                 <th>글쓴이</th>
                                                 <th>등록일</th>
                                                 <th>조회수</th>
@@ -96,24 +56,8 @@
 												</c:forEach>
 										</div>
 										
-                           
+                                </div>
+                            </div>
                         </div>
-							</article>
-					</div>
-
-				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-			</div>
-
-								<!-- Scripts -->	
-		 	<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/jquery.min.js'/>"></script> 
-     		<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/browser.min.js'/>"/></script>
-			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/breakpoints.min.js'/>"/></script>
-			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/util.js'/>"/></script>
-			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/main.js'/>"/></script>
 </body>
 </html>

@@ -113,9 +113,7 @@
 									</div>
 								</form>
 							</article>
-
 					</div>
-
 				<!-- Footer -->
 					<div id="footer">
 						<ul class="copyright">

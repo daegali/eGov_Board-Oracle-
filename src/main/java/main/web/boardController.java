@@ -96,7 +96,41 @@ public class boardController {
 		
 		model.addAttribute("boardDetail", boardVO);
 		return "board/boardDetail";
-		
 	}
+	
+	@RequestMapping("/boardModifyWrite.do")
+	public String selectBoardModifyWrite( BoardVO vo, ModelMap model) throws Exception {
 		
+		BoardVO boardVO = boardService.selectBoardDetail(vo.getUnq());
+		model.addAttribute("boardDetail",boardVO);
+		return "board/boardModifyWrite";
+	}
+	
+	@RequestMapping("/boardModifySave.do")
+	@ResponseBody
+	public String updateBoard( BoardVO vo ) throws Exception {
+		
+		// pass 확인 처리
+		int count = boardService.selectBoardPass(vo);
+		int result = 0;
+		
+		if( count == 1 ) {
+			result = boardService.updateBoard(vo);
+		}else {
+			result = -1;
+		}
+		return result + "";
+	}	
+	
+	@RequestMapping("/passWrite.do")
+	public String passWrite( int unq ) {
+			return "board/passWrite";
+	}
+	
+	
+	
+	
+	
+	
+	
 }

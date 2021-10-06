@@ -81,4 +81,20 @@
 				SET hits=hits+1 where unq=#unq#
 	</update>
 	
+	<update id="boardDAO.updateBoard">
+		UPDATE
+			tb_board
+		SET
+			title = #title#
+			,name=#name#
+			,content=#content#
+		WHERE
+			unq='$unq$'			
+	</update>
+	
+	<select id="boardDAO.selectBoardPass"  resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM tb_board
+			WHERE unq=#unq# and pass=#pass#
+	</select>
+	
 </sqlMap>

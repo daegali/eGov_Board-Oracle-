@@ -17,4 +17,11 @@ public interface BoardService {
 			
 			// 조회수 증가
 			public int updateBoardHits( int unq ) throws Exception;
+			
+			// 게시판 수정하기
+			public int updateBoard( BoardVO vo ) throws Exception;
+			
+			// 암호확인
+			public int selectBoardPass( BoardVO vo ) throws Exception;
+			
 }
