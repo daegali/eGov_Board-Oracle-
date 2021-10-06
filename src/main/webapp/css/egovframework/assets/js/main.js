@@ -4,6 +4,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+
 	function fn_submit() { 
 				
 		    if( $.trim( $("#title").val() ) ==  "") {
@@ -46,7 +47,7 @@
 }
 
 function fn_modify() { 
-				
+		
 			// trim() -> 앞뒤 공백 제거, java , jsp
 				
 		    if( $.trim( $("#title").val() ) ==  "") {
@@ -91,7 +92,7 @@ function fn_modify() {
 		});			
 }    
 			
-			
+
 
 (function($) {
 

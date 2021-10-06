@@ -18,12 +18,12 @@ public class boardController {
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
-	@RequestMapping("/boardWrite.do")
+	@RequestMapping(value="/boardWrite.do")
 	public String boardWrite() {
 		return "board/main";
 	}
 	
-	@RequestMapping("/boardWriteSave.do")
+	@RequestMapping(value="/boardWriteSave.do")
 	@ResponseBody
 	public String insertBoard( BoardVO vo) throws Exception {
 		
@@ -41,7 +41,7 @@ public class boardController {
 		return msg;
 	}
 	
-	@RequestMapping("/boardList.do")
+	@RequestMapping(value="/boardList.do")
 	public String selectBoardList( BoardVO vo, ModelMap model ) throws Exception {
 		
 		int pageNum=3;
@@ -82,7 +82,7 @@ public class boardController {
 		return "board/boardList";
 	}
 	
-	@RequestMapping("/boardDetail.do")
+	@RequestMapping(value="/boardDetail.do")
 	public String selectBoardDetailView( BoardVO vo, ModelMap model ) throws Exception {
 		
 		// 조회수 처리
@@ -98,7 +98,7 @@ public class boardController {
 		return "board/boardDetail";
 	}
 	
-	@RequestMapping("/boardModifyWrite.do")
+	@RequestMapping(value="/boardModifyWrite.do")
 	public String selectBoardModifyWrite( BoardVO vo, ModelMap model) throws Exception {
 		
 		BoardVO boardVO = boardService.selectBoardDetail(vo.getUnq());
@@ -106,7 +106,7 @@ public class boardController {
 		return "board/boardModifyWrite";
 	}
 	
-	@RequestMapping("/boardModifySave.do")
+	@RequestMapping(value="/boardModifySave.do")
 	@ResponseBody
 	public String updateBoard( BoardVO vo ) throws Exception {
 		
@@ -122,15 +122,29 @@ public class boardController {
 		return result + "";
 	}	
 	
-	@RequestMapping("/passWrite.do")
-	public String passWrite( int unq ) {
+	@RequestMapping(value="/passWrite.do")
+	public String passWrite( int unq, ModelMap model ) {
+			
+			model.addAttribute("unq", unq);			
 			return "board/passWrite";
 	}
 	
+	@RequestMapping(value="/boardDelete.do")
+	@ResponseBody
+	public String deleteBoard( BoardVO vo ) throws Exception {
 	
-	
-	
-	
-	
+		// pass 일치 검사
+		int count = boardService.selectBoardPass(vo);
+		int result = 0;
+		
+		if(count == 1) {
+			result = boardService.deleteBoard(vo);
+		}else {
+			result = -1;
+		}
+		
+		return result + "";
+		
+	}
 	
 }

@@ -97,4 +97,10 @@
 			WHERE unq=#unq# and pass=#pass#
 	</select>
 	
+	<delete id="boardDAO.deleteBoard">
+		DELETE FROM 
+					tb_board 
+							WHERE unq=#unq# and pass=#pass#
+	</delete>
+	
 </sqlMap>
