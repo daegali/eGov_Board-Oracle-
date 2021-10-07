@@ -51,4 +51,12 @@
 					WHERE dong LIKE '%' || #dong# || '%'
 											OR ri LIKE '%' || #dong# || ' %'		
 		</select>
+		
+		<select id="userDAO.selectUserIdPass"  resultClass="java.lang.Integer">
+		
+				SELECT COUNT(*) FROM tb_user 
+					WHERE 
+						userid=#userid# 
+						
+		</select>
 </sqlMap>

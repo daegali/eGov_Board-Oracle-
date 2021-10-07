@@ -18,4 +18,9 @@ public interface UserService {
 		 * 우편번호(주소) 검색
 		 */
 		public List<?> selectPostList(String dong) throws Exception;
+		
+		/*
+		 * 로그인 데이타 확인
+		 */
+		public int selectUserIdPass( UserVO vo ) throws Exception; 
 }	

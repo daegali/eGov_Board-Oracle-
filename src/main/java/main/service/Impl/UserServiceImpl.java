@@ -36,5 +36,12 @@ public class UserServiceImpl implements UserService {
 	public List<?> selectPostList(String dong) throws Exception {
 		return userDAO.selectPostList(dong);
 	}
+	/*
+	 * 로그인 데이타 확인
+	 */
+	@Override
+	public int selectUserIdPass(UserVO vo) throws Exception {
+		return userDAO.selectUserIdPass(vo);
+	}
 
 }

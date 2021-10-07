@@ -30,6 +30,11 @@ public class UserDAO extends EgovAbstractDAO {
 	public List<?> selectPostList(String dong) {
 		return (List<?>) list("userDAO.selectPostLIst", dong);
 	}
-
+	/*
+	 * 로그인 데이타 확인
+	 */
+	public int selectUserIdPass(UserVO vo) {
+		return (int) select("userDAO.selectUserIdPass", vo);
+	}
 
 }

@@ -159,7 +159,7 @@ $(function(){
 								alert(userid + "님 로그인되었습니다." );
 								location="main.do";
 							}else{
-								alert("아이디 또는 비밀번호를 확인해 주세요.");
+								alert("아이디 또는 비밀번호를 확인해 주세요." + result);
 							}
 						},
 						error: function(){

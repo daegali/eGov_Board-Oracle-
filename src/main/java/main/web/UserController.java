@@ -3,6 +3,7 @@ package main.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -85,4 +86,33 @@ public class UserController {
 			return "user/loginWrite";
 		}
 		
+		/*
+		 * 로그인 하기
+		 */
+		@RequestMapping("/loginWriteSub.do")
+		@ResponseBody  // 비동기 처리시 꼭 추가해야 함
+		public String loginProcessing( UserVO vo, HttpSession session  ) throws Exception {
+				
+			String msg = "";
+			
+			int count = userService.selectUserIdPass(vo);
+			if(count == 1) {
+				// 인증 관련 세션 생성
+				session.setAttribute("SessionUserID", vo.getUserid());
+				
+				// msg = "ok" 처리
+				msg = "ok";
+			}
+				
+			return msg;
+		}
+		/*
+		 * 로그아웃 처리
+		 */
+		@RequestMapping("/logout.do")
+		public String logout(HttpSession session) {
+			
+			session.removeAttribute("SessionUserID");
+			return "user/loginWrite";
+		}
 }
