@@ -90,10 +90,10 @@ function fn_modify() {
 				}
 				
 		});			
-}    
-			
+}
 
-
+				
+		
 (function($) {
 
 	var $window = $(window),

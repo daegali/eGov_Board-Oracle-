@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserSpace">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="userVO" type="main.service.UserVO"/>
+	
+	
+		<insert id="userDAO.insertUser">
+			<![CDATA[
+					INSERT INTO tb_user(
+							userid, 
+							pass, 
+							name, 
+							birth, 
+							phone, 
+							gender, 
+							zipcode, 
+							address
+						 )
+					VALUES (
+						  #userid#
+						  , #pass#
+						  , #name#
+						  , #birth# 
+						  ,#phone#
+						  , #gender#
+						  , #zipcode#
+						  , #address# 
+							)
+		]]>
+		</insert>
+		
+		<select id="userDAO.selectUserIdCheck"  resultClass="java.lang.Integer">
+				SELECT count(*) FROM tb_user 
+											WHERE userid = #userid#
+		</select>
+
+</sqlMap>
