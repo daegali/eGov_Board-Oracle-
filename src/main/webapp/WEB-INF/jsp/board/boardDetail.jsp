@@ -10,11 +10,7 @@
 		 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/main.css'/>"/>
 	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/noscript.css'/>"/>
 	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/fontawesome-all.min.css'/>"/>
-		<style>
-			th {
-				font-weight: bold ;
-			}
-		</style>
+		<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/style.css'/>"/>
 	</head>
 		<!--Jstl 문법 content \\n 을 찾아서 <br>로 바꿔라 -->
 	<%-- <%pageContext.setAttribute("newline", "\n"); %>
@@ -23,12 +19,7 @@
 		<!-- Wrapper-->
 			<div id="wrapper">
 				<!-- Nav -->
-					<nav id="nav">
-						<a href="boardWrite.do" class="icon solid fa-home"><span>홈</span></a>
-						<a href="boardList.do" class="icon solid fa-folder"><span>글목록</span></a>
-						<a href="boardWrite.do#contact" class="icon solid fa-envelope"><span>글쓰기</span></a>
-						<a href="https://github.com/daegali" class="icon brands fa-twitter"><span>GIT</span></a>
-					</nav>
+						<jsp:include page="/WEB-INF/jsp/cmmn/header.jsp" />
 
 				<!-- Main -->
 					<div id="main">
@@ -68,12 +59,7 @@
 					</div>
 
 				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-
+						<jsp:include page="/WEB-INF/jsp/cmmn/footer.jsp" />
 			</div>
 
 		<!-- Scripts -->	

@@ -13,10 +13,15 @@ import main.service.BoardService;
 import main.service.BoardVO;
 
 @Controller
-public class boardController {
+public class BoardController {
 	
 	@Resource(name="boardService")
 	private BoardService boardService;
+	
+	@RequestMapping(value="/main.do")
+	public String main() {
+		return "board/main";
+	}
 	
 	@RequestMapping(value="/boardWrite.do")
 	public String boardWrite() {

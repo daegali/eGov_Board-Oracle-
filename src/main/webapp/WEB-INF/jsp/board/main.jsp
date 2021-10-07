@@ -2,42 +2,29 @@
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Astral by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/main.css'/>"/>
-	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/noscript.css'/>"/>
-	     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/fontawesome-all.min.css'/>"/>
-		<style>
-			th {
-				font-weight: bold ;
-			}
-		</style>
-	</head>
-	
+<head>
+<title>Astral by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/main.css'/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/style.css'/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/noscript.css'/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/assets/css/fontawesome-all.min.css'/>"/>		
+</head>
 	<body class="is-preload">
-	
 		<!-- Wrapper-->
 			<div id="wrapper">
 				<!-- Nav -->
-					<nav id="nav">
-						<a href="boardWrite.do" class="icon solid fa-home"><span>홈</span></a>
-						<a href="boardList.do" class="icon solid fa-folder"><span>글목록</span></a>
-						<a href="boardWrite.do#contact" class="icon solid fa-envelope"><span>글쓰기</span></a>
-						<a href="https://github.com/daegali" class="icon brands fa-twitter"><span>GIT</span></a>
-					</nav>
-
+							<jsp:include page="/WEB-INF/jsp/cmmn/header.jsp" />
 				<!-- Main -->
 					<div id="main">
-
 						<!-- Me -->
 							<article id="home" class="panel intro">
 								<header>
 									<h1>최일광</h1>
 									<p>Senior Astral Projectionist</p>
 								</header>
-								<a href="#work" class="jumplink pic">
+								<a href="boardList.do" class="jumplink pic">
 									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
 								<img src="<c:url value='/images/egovframework/example/me.jpg'/>" alt=""/>
 								</a>
@@ -114,20 +101,14 @@
 								</form>
 							</article>
 					</div>
-				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-
+							<jsp:include page="/WEB-INF/jsp/cmmn/footer.jsp"></jsp:include>
 			</div>
-
-		<!-- Scripts -->	
+			
+			<!-- Scripts -->	
 		 	<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/jquery.min.js'/>"></script> 
      		<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/browser.min.js'/>"/></script>
 			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/breakpoints.min.js'/>"/></script>
 			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/util.js'/>"/></script>
-			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/main.js'/>"/></script>
+			<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/main.js'/>"/></script>		
 	</body>
 </html>
