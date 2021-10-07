@@ -13,7 +13,6 @@ pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
@@ -1473,6 +1472,7 @@ input, select, textarea {
 	form input[type="text"],
 	form input[type="email"],
 	form input[type="password"],
+	
 	form select,
 	form textarea {
 		-webkit-appearance: none;
@@ -1586,6 +1586,7 @@ input, select, textarea {
 	input[type="button"],
 	input[type="submit"],
 	input[type="reset"],
+
 	button,
 	.button {
 		-moz-transition: background-color .25s ease-in-out;
@@ -1600,6 +1601,13 @@ input, select, textarea {
 		cursor: pointer;
 		outline: 0;
 		padding: 0.7em 1.5em 0.7em 1.5em;
+	}
+	
+	input[type="radio"],
+
+	.button {
+		cursor: pointer;
+		padding: 10px;
 	}
 
 		input[type="button"]:hover,

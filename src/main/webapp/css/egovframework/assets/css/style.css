@@ -19,3 +19,26 @@ th {
 				 padding-top: 5px;
     			padding-bottom: 6px;
 			}
+			
+caption {
+	font-weight:board;
+	margin-bottom: 30px;
+}
+
+ #zipcode{
+ 	width:50%;
+ 	 margin-bottom: 15px;
+ }
+ #phon{
+ 	width:50%;
+ }
+ #userid{
+ 	width:50%;
+ }		
+ #address{
+ 	width:50%;
+ }
+ label {
+ 	text-align:left;
+ 	cursor: pointer;
+ }				
