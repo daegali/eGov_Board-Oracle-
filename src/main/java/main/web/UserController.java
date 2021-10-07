@@ -1,8 +1,11 @@
 package main.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,6 +57,32 @@ public class UserController {
 				msg="ok";
 			}
 			return msg;
+		}
+		
+		/*
+		 * 우편번호검색 등록 화면
+		 */
+		@RequestMapping("/post1.do")
+		public String post1() {
+			return "user/post1";
+		}
+		/*
+		 * 우편번호 검색화면 출력
+		 */
+		@RequestMapping("/post2.do")
+		public String post2(String dong, ModelMap model) throws Exception {
+			
+			List<?> list = userService.selectPostList(dong);
+			model.addAttribute("resultList", list);
+			return "user/post2";
+		}
+		
+		/*
+		 * 로그인 화면 이동
+		 */
+		@RequestMapping("/loginWrite.do")
+		public String loginWrite() {
+			return "user/loginWrite";
 		}
 		
 }

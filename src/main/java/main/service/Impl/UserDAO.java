@@ -1,5 +1,7 @@
 package main.service.Impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
@@ -20,6 +22,13 @@ public class UserDAO extends EgovAbstractDAO {
 	 */
 	public int selectUserIdCheck(String userid) {
 		return (int) select("userDAO.selectUserIdCheck", userid);
+	}
+	
+	/*
+	 * 우편번호(주소) 검색
+	 */
+	public List<?> selectPostList(String dong) {
+		return (List<?>) list("userDAO.selectPostLIst", dong);
 	}
 
 

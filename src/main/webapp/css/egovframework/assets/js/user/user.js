@@ -87,6 +87,96 @@ $(function(){
 			});
 	});
 });
+// 달력
+$( function (){
+	$("#birth").datepicker({
+		changeMonth: true,
+		changeYear: true
+	});
+});
+
+//우편번호 검색창 열기
+$(function(){
+	$("#btn_zipcode").click(function(){
+	
+		var w = 700;
+		var h = 400;
+		var url="post1.do";
+		
+		window.open(url , 'zipcode', 'width=' + w + ',height=' + h);
+		
+	});
+});
+
+// 우편번호 회원가입창에 적용시키기
+$(function(){
+		$("#btn_send").click(function(){	
+				var addr = $("#address").val();
+				
+				// 우편번호 분리하기
+				var addr_array = addr.split(" ");
+				// 우편번호 범위 설정 (우편번호 [] 기호 없애기)
+				var zipcode = addr_array[0].substring(1, addr_array[0].length -1);
+				// 나머지 주소 분리
+				var address = addr.replace(addr_array[0], "");
+				address = $.trim(address);
+				
+				//userWrite.jsp에 적용
+				opener.document.frm.zipcode.value = zipcode;
+				opener.document.frm.address.value = address;
+				self.close();
+		});
+});
+
+// 로그인 하기
+$(function(){		
+		$("#btn_login").click(function(){
+			
+			var userid= $.trim($("#userid").val());
+			var pass = $.trim($("#pass").val());
+			
+			if(userid == "" ) {
+				alert("아이디를 입력해주세요.");
+				$("#userid").focus();
+				return false;
+			}
+				if(pass == "" ) {
+				alert("비밀번호를 입력해주세요.");
+				$("#pass").focus();
+				return false;
+			}
+			
+			$.ajax({			
+						// 전송전 셋팅
+						type:"POST",
+						data:  "userid=" + userid + "&pass" + pass, // json 전송 Type 
+						url:  "loginWriteSub.do",
+						dataType:"text",
+						
+						// 전송 후 셋팅
+						success:function( result ) {
+							if(result == "ok"){
+								alert(userid + "님 로그인되었습니다." );
+								location="main.do";
+							}else{
+								alert("아이디 또는 비밀번호를 확인해 주세요.");
+							}
+						},
+						error: function(){
+							alert("오류 발생")
+						}		
+							
+				});					
+		});
+});
+
+
+
+
+
+
+
+
 
   
 				

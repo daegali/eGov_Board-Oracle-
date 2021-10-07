@@ -1,5 +1,7 @@
 package main.service.Impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int selectUserIdCheck(String userid) throws Exception {
 		return userDAO.selectUserIdCheck(userid);
+	}
+	/*
+	 * 우편번호(주소) 검색
+	 */
+	@Override
+	public List<?> selectPostList(String dong) throws Exception {
+		return userDAO.selectPostList(dong);
 	}
 
 }

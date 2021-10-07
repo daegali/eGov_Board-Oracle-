@@ -36,5 +36,19 @@
 				SELECT count(*) FROM tb_user 
 											WHERE userid = #userid#
 		</select>
-
+		
+		<select id="userDAO.selectPostLIst"  resultClass="egovMap">
+				SELECT '['  || zipcode ||  ']' ||
+						'  ' || sido ||
+						'  ' || gugun ||
+						'  ' || dong ||
+						'  ' || ri ||
+						'  ' || bldg ||
+						'  ' || bunji ||
+						'  ' || seq 
+							AS addr
+				FROM tb_post
+					WHERE dong LIKE '%' || #dong# || '%'
+											OR ri LIKE '%' || #dong# || ' %'		
+		</select>
 </sqlMap>
