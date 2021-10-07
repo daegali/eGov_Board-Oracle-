@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 		<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/jquery-1.12.4.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/css/egovframework/assets/js/jquery-ui.js'/>"></script>  
+		
 		<script>
 		$(function(){
 			 $("#delBtn").click(function() {
@@ -60,8 +61,6 @@
 				<td><button type="button"  id="delBtn" >삭제하기</button></td>
 			</tr>
 		</table>
-		
-
      		
 </body>
 </html>
